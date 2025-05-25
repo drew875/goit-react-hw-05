@@ -1,5 +1,5 @@
-import { Link, useParams, Outlet, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, useParams, Outlet, useNavigate, useLocation } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
 import fetchMovieById from "../../fetchFilmsByID";
 
 
@@ -7,6 +7,9 @@ const MoviesDetailsPage = () => {
     const { movieId } = useParams();
     const [movie, setMovie] = useState(null);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const backLink = useRef(location.state?.form || "/");
 
     useEffect(() => {
         const loadMovie = async () => {
@@ -21,7 +24,7 @@ const MoviesDetailsPage = () => {
     return (
 
         <div>
-            <button onClick={() => navigate(-1)}>Go back</button>
+            <button onClick={() => navigate(backLink.current)}>Go back</button>
             <h2>{movie.title}</h2>
             <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

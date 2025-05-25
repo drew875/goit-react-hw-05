@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
-import fetchCast from "../src/fetchCast";
+import fetchCast from "../fetchCast";
 
 const MovieCast = () => {
     const { movieId } = useParams();

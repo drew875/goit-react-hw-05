@@ -1,4 +1,4 @@
-import fetchReview from "../src/fetchReview";
+import fetchReview from "../fetchReview";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 

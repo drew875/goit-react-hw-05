@@ -1,12 +1,16 @@
 import fetchSearch from "../fetchSearchFilms";
 import { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLocation, useNavigate } from "react-router-dom";
+import { useRef } from "react";
 
 const MoviePage = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const [movies, setMovies] = useState([]);
     const [query, setQuery] = useState("");
+    const location = useLocation();
+    const navigate = useNavigate();
+    const backLink = useRef(location.state?.from || "/");
 
     const searchQuery = searchParams.get("query");
 
@@ -25,6 +29,7 @@ const MoviePage = () => {
 
     return (
         <>
+            <button onClick={() => navigate(backLink.current)}>Go back</button>
             <h3>Search Movie</h3>
             <form onSubmit={handleSubmit}>
                 <input value={query} onChange={(e) => setQuery(e.target.value)} />
