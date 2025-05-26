@@ -2,7 +2,7 @@ import fetchSearch from "../../fetchSearchFilms";
 import { useState, useEffect } from "react";
 import { Link, useSearchParams, useLocation, useNavigate } from "react-router-dom";
 import { useRef } from "react";
-import { MovieList } from "../../components/MovieList";
+import MovieList from "../../components/MovieList";
 
 const MoviesPage = () => {
 
