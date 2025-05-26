@@ -1,9 +1,10 @@
-import fetchSearch from "../fetchSearchFilms";
+import fetchSearch from "../../fetchSearchFilms";
 import { useState, useEffect } from "react";
 import { Link, useSearchParams, useLocation, useNavigate } from "react-router-dom";
 import { useRef } from "react";
+import { MovieList } from "../../components/MovieList";
 
-const MoviePage = () => {
+const MoviesPage = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const [movies, setMovies] = useState([]);
@@ -35,15 +36,9 @@ const MoviePage = () => {
                 <input value={query} onChange={(e) => setQuery(e.target.value)} />
                 <button type="submit">Search</button>
             </form>
-            <ul>
-                {movies.map((movie) => (
-                    <li key={movie.id}>
-                        <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-                    </li>
-                ))}
-            </ul>
+            <MovieList movies={movies} />
         </>
     )
 }
 
-export default MoviePage;
+export default MoviesPage;
