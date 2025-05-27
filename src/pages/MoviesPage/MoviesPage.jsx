@@ -36,7 +36,7 @@ const MoviesPage = () => {
                 <input value={query} onChange={(e) => setQuery(e.target.value)} />
                 <button type="submit">Search</button>
             </form>
-            <MovieList movies={movies} />
+            <MovieList films={movies} />
         </>
     )
 }
